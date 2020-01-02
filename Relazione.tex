@@ -5,7 +5,7 @@
 %\usepackage{mathtools}
 \usepackage{graphicx}
 \usepackage[italian]{babel}
-%\usepackage{float}
+\usepackage{float}
 %\usepackage{amsmath}
 \usepackage{verbatim}
 
@@ -55,13 +55,29 @@ Per effettuare la prova sono stati utilizzati i seguenti strumenti di misura:
 \section{Componenti utilizzati}
 
 \section{Schema elettrico del circuito di prova}
-\begin{figure}[h]
+Il seguente schema rappresenta la struttura trifase in esame collegata ad un
+carico resistivo.
+
+I trasduttori di corrente sono stati schematizzati come semplici
+amperometri mentre le sonde collegate ai primi due canali dell'oscilloscopio
+coincidono con uno stesso voltmetro perchè collegate in parallelo, le costanti di
+amplificazione impostate sull'oscilloscopio sono in realtà diverse perchè i due 
+segnali rappresentano grandezze diverse, in questo caso tensione
+e corrente sul carico.
+
+\begin{figure}[H]
  \centering
  \includegraphics[keepaspectratio=true,width=1\linewidth]{img/circuito_qucs.png}
  % circuito_qucs.png: 1193x395 px, 115dpi, 26.35x8.72 cm, bb=0 0 747 247
- \label{Fig.:}
+ \caption{Struttura e circuito di misura}
+ \label{fig:circuito}
 \end{figure}
 
+Ogni singolo tiristore è impulsato autonomamente da un gate driver trifase 
+realizzato appositamente.
+
+Il trasformatore trifase è a flusso vincolato dato che sono presenti 
+solo tre colonne, questo dettaglio non è individuabile dallo schema.
 \section{Richiami teorici}
 
 \section{Descrizione della prova eseguita}

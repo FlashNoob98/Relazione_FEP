@@ -1,6 +1,6 @@
 <Qucs Schematic 0.0.19>
 <Properties>
-  <View=0,0,1387,800,1,0,0>
+  <View=0,0,1387,852,1,0,0>
   <Grid=10,10,1>
   <DataSet=schema_circuito.dat>
   <DataDisplay=schema_circuito.dpl>
