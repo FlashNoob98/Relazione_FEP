@@ -6,8 +6,9 @@
 \usepackage{graphicx}
 \usepackage[italian]{babel}
 \usepackage{float}
-%\usepackage{amsmath}
+\usepackage{amsmath}
 \usepackage{verbatim}
+\usepackage{siunitx}
 
 \title{Analisi ponte trifase total-controllato}
 \author{Olivieri Daniele}
@@ -49,21 +50,34 @@ di riferimento per la prova è la CEI EN 60146 ``Convertitori a semiconduttore''
 Per effettuare la prova sono stati utilizzati i seguenti strumenti di misura:
 \begin{itemize}
  \item Oscilloscopio a 4 canali Keysight DSO-X 2014A
- \item Trasduttore di corrente ad effetto Hall da 5 A, artigianale
+ \item Trasduttore di corrente a 2 canali ad effetto Hall da 5 A, artigianale
 \end{itemize}
 
 \section{Componenti utilizzati}
+I componenti sottoposti a prova sono sei tiristori \%INSERISCI MODELLO\%.
+L'alimentazione è fornita tramite un trasformatore trifase TTSK0.20 da 200 VA 
+conforme alla norma di sicurezza CEI 96-7.
+
+Il trasformatore è collegato a stella con neutro ad un'alimentazione variabile 
+trifase mentre il secondario è collegato a stella senza neutro alle tre gambe del 
+ponte.
+
+Il carico è composto da un resistore da $\SI{10}{\ohm}$.
+
+
 
 \section{Schema elettrico del circuito di prova}
 Il seguente schema rappresenta la struttura trifase in esame collegata ad un
 carico resistivo.
 
-I trasduttori di corrente sono stati schematizzati come semplici
-amperometri mentre le sonde collegate ai primi due canali dell'oscilloscopio
-coincidono con uno stesso voltmetro perchè collegate in parallelo, le costanti di
-amplificazione impostate sull'oscilloscopio sono in realtà diverse perchè i due 
-segnali rappresentano grandezze diverse, in questo caso tensione
-e corrente sul carico.
+I trasduttori di corrente sono stati rappresentati come degli
+amperometri mentre le sonde relative ai canali 1 e 2 dell'oscilloscopio
+coincidono con uno stesso voltmetro perchè sono collegate entrambe sul carico.
+
+Una diversa configurazione delle costanti di amplificazione dell'oscilloscopio 
+permette di visualizzare sia la tensione che la corrente
+presente nel carico approssimando il resistore ad una resistenza ideale.
+
 
 \begin{figure}[H]
  \centering
@@ -73,11 +87,13 @@ e corrente sul carico.
  \label{fig:circuito}
 \end{figure}
 
-Ogni singolo tiristore è impulsato autonomamente da un gate driver trifase 
-realizzato appositamente.
+Ogni singolo tiristore è impulsato da un gate driver trifase appositamente 
+realizzato.
 
 Il trasformatore trifase è a flusso vincolato dato che sono presenti 
-solo tre colonne, questo dettaglio non è individuabile dallo schema.
+solo tre colonne, questa proprietà non è individuabile dallo schema in cui 
+è presente un banco trimonofase a flusso libero.
+
 \section{Richiami teorici}
 
 \section{Descrizione della prova eseguita}
