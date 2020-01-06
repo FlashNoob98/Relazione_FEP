@@ -22,7 +22,8 @@ V3 = Vp*sin(omega*t-4*pi/3);
 figure();
 hold on; grid on;
 x = t*1000; %Ai fini della rappresentazione dei tempi
-plot(x,V1,x,V2,x,V3,[0 x(end)],[0 0],'k',0.3);
+plot(x,V1,x,V2,x,V3);
+plot([0 x(end)],[0 0],'Color','k');
 legend('R','S','T');
 ylabel('Tensione [V]');
 xlabel('Tempo [ms]');

@@ -58,12 +58,14 @@ Per effettuare la prova sono stati utilizzati i seguenti strumenti di misura:
 
 \section{Componenti utilizzati}
 I componenti sottoposti a prova sono sei tiristori \%INSERISCI MODELLO\%.
-L'alimentazione del ponte è fornita tramite un trasformatore trifase TTSK0.20 da 200 VA 
-conforme alla norma di sicurezza CEI 96-7.
+L'alimentazione del ponte è fornita tramite un trasformatore trifase TTSK0.20 da 
+200 VA conforme alla norma di sicurezza CEI 96-7.
+Si può approssimare il rapporto tra le tensioni nominali del trasformatore al 
+rapporto di trasformazione pari a 9.524.
 
 Il trasformatore è collegato a stella con neutro alla rete trifase con una tensione
-concatenata di $\SI{220}{\volt_{rms}}$ mentre il secondario è collegato a stella senza
-neutro alle tre gambe del ponte.
+concatenata di $\SI{220}{\volt_{RMS}}$ mentre il secondario è collegato a stella 
+senza neutro alle tre gambe del ponte.
 
 Il carico è composto da un induttore da $\SI{100}{\milli\henry}$ e
 un resistore in serie da $\SI{10}{\ohm}$.
@@ -98,18 +100,39 @@ solo tre colonne, questa proprietà non è individuabile dallo schema in cui
 
 \section{Richiami teorici}
 La rete trifase fornisce una terna di tensioni sinusoidali ad una frequenza di
-$\SI{50}{\hertz}$ sfasate tra loro di \ang{120}
-così rappresentabili:
+$\SI{50}{\hertz}$ sfasate tra loro con un angolo di \ang{120}
+così rappresentabile:
 
-\begin{comment}
  \begin{figure}[H]
  \centering
- \includegraphics[keepaspectratio=true,width=1\linewidth]{img/circuito_qucs.png}
+ \includegraphics[keepaspectratio=true,width=0.95\linewidth]
+ {img/sinusoidi_trifase.png}
  % circuito_qucs.png: 1193x395 px, 115dpi, 26.35x8.72 cm, bb=0 0 747 247
  \caption{Terna trifase}
- \label{fig:circuito}
+ \label{fig:terna_trifase}
 \end{figure}
-\end{comment}
+
+Per l'andata in conduzione di un tiristore è necessario che si verifichino le seguenti
+condizioni:
+\begin{itemize}
+ \item \(\exists\) una maglia di corrente possibile che coinvolga il componente
+ \item \(V_{AK} \geq 0\) la tensione anodo-catodo sia maggiore di 0
+ \item \(I_G \geq I_{GT}\) la corrente di gate sia maggiore di 
+ un certo valore di soglia (trigger)
+\end{itemize}
+
+È possibile dividere i tiristori in due gruppi, superiore ed inferiore. 
+
+Quelli del gruppo superiore \((T1,T2,T3)\) hanno gli anodi collegati tra loro
+e con il carico. Ai catodi invece, i tiristori vedono le 
+tensioni stellate rispetto al centro stella formatosi al secondario
+del trasformatore.
+
+Per quanto riguarda i tiristori del gruppo inferiore \((T1\_,T2\_,T3\_)\) invece
+si presenta la situazione opposta, i catodi sono in comune tra essi e con il carico,
+gli anodi sono connessi all'alimentazione e quindi ai catodi dei tiristori del gruppo precedente.
+
+
 
 Sia \(\alpha\) l'angolo d'impulso dei componenti, riferito rispetto al valore nullo
 delle tensioni concatenate
