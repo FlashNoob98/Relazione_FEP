@@ -40,6 +40,8 @@ Elenco canali oscilloscopio:
 
 Trasformatore stella con neutro al primario - stella al secondario
 Riferimenti degli impulsi sulla concatenata
+V1/V2 = 9.524
+Tensione ingresso 220 V starred
 \end{comment}
 
 
@@ -56,12 +58,12 @@ Per effettuare la prova sono stati utilizzati i seguenti strumenti di misura:
 
 \section{Componenti utilizzati}
 I componenti sottoposti a prova sono sei tiristori \%INSERISCI MODELLO\%.
-L'alimentazione è fornita tramite un trasformatore trifase TTSK0.20 da 200 VA 
+L'alimentazione del ponte è fornita tramite un trasformatore trifase TTSK0.20 da 200 VA 
 conforme alla norma di sicurezza CEI 96-7.
 
-Il trasformatore è collegato a stella con neutro ad un'alimentazione variabile 
-trifase mentre il secondario è collegato a stella senza neutro alle tre gambe del 
-ponte.
+Il trasformatore è collegato a stella con neutro alla rete trifase con una tensione
+concatenata di $\SI{220}{\volt_{rms}}$ mentre il secondario è collegato a stella senza
+neutro alle tre gambe del ponte.
 
 Il carico è composto da un induttore da $\SI{100}{\milli\henry}$ e
 un resistore in serie da $\SI{10}{\ohm}$.
@@ -75,7 +77,7 @@ carico puramente resistivo.
 I trasduttori di corrente sono stati rappresentati con degli
 amperometri. Il voltmetro collegato al canale 1 permette di visualizzare la 
 tensione sul carico, il voltmetro collegato al canale 2, tramite una costante di 
-attenuazione di pari valore rispetto alla resistenza, permette di misurare 
+attenuazione di valore pari alla resistenza, permette di misurare 
 la corrente che circola nel carico.
 
 
@@ -95,6 +97,26 @@ solo tre colonne, questa proprietà non è individuabile dallo schema in cui
 è presente un banco trimonofase a flusso libero.
 
 \section{Richiami teorici}
+La rete trifase fornisce una terna di tensioni sinusoidali ad una frequenza di
+$\SI{50}{\hertz}$ sfasate tra loro di \ang{120}
+così rappresentabili:
+
+\begin{comment}
+ \begin{figure}[H]
+ \centering
+ \includegraphics[keepaspectratio=true,width=1\linewidth]{img/circuito_qucs.png}
+ % circuito_qucs.png: 1193x395 px, 115dpi, 26.35x8.72 cm, bb=0 0 747 247
+ \caption{Terna trifase}
+ \label{fig:circuito}
+\end{figure}
+\end{comment}
+
+Sia \(\alpha\) l'angolo d'impulso dei componenti, riferito rispetto al valore nullo
+delle tensioni concatenate
+\begin{equation}
+ V_0 = \frac{3}{\pi} \sqrt{2} \sqrt{3} V_\lambda \cos\alpha
+ \label{eq:valore_medio_tensione_ponte}
+\end{equation}
 
 
 \section{Descrizione della prova eseguita}
