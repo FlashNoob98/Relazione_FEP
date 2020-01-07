@@ -98,6 +98,14 @@ Il trasformatore trifase è a flusso vincolato dato che sono presenti
 solo tre colonne, questa proprietà non è individuabile dallo schema in cui 
 è presente un banco trimonofase a flusso libero.
 
+In seguito si riporta una foto del banco di prova:
+\begin{figure}[H]
+ \centering
+ \includegraphics[keepaspectratio=true,width=1\linewidth]{img/circuito_reale.png}
+ \caption{Circuito realizzato per la misura}
+ \label{fig:circuito_reale}
+\end{figure}
+
 \section{Richiami teorici}
 La rete trifase fornisce una terna di tensioni sinusoidali ad una frequenza di
 $\SI{50}{\hertz}$ sfasate tra loro con un angolo di \ang{120}
@@ -120,19 +128,28 @@ condizioni:
  \item \(I_G \geq I_{GT}\) la corrente di gate sia maggiore di 
  un certo valore di soglia (trigger)
 \end{itemize}
-
 È possibile dividere i tiristori in due gruppi, superiore ed inferiore. 
 
 Quelli del gruppo superiore \((T1,T2,T3)\) hanno gli anodi collegati tra loro
-e con il carico. Ai catodi invece, i tiristori vedono le 
-tensioni stellate rispetto al centro stella formatosi al secondario
-del trasformatore.
+e con il carico. Ai catodi invece, sono collegate le tre fasi e i tiristori 
+vedono le rispettive tensioni stellate rispetto al centro stella formatosi al 
+secondario del trasformatore.
 
 Per quanto riguarda i tiristori del gruppo inferiore \((T1\_,T2\_,T3\_)\) invece
 si presenta la situazione opposta, i catodi sono in comune tra essi e con il carico,
 gli anodi sono connessi all'alimentazione e quindi ai catodi dei tiristori del gruppo precedente.
 
-
+Trascurando la caduta di tensione sui tiristori si può assumere che, tramite un
+opportuno pilotaggio dei componenti, si può fornire al carico la tensione
+concatenata tra due fasi opportunamente scelte a valle del trasformatore.
+Si possono rappresentare le tensioni concatenate in un periodo nel seguente modo:
+ \begin{figure}[H]
+ \centering
+ \includegraphics[keepaspectratio=true,width=0.95\linewidth]
+ {img/concatenate_carico.png}
+ \caption{Andamento delle tensioni concatenate a valle del trasformatore}
+ \label{fig:concatenate}
+\end{figure}
 
 Sia \(\alpha\) l'angolo d'impulso dei componenti, riferito rispetto al valore nullo
 delle tensioni concatenate
