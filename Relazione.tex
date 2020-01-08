@@ -153,12 +153,35 @@ concatenata tra due fasi opportunamente scelte.
 Osservando l'immagine si suppone che inizialmente conducano i tiristori \(T3\_\) e \(T2\),
 dopo un tempo pari a \(\frac{1}{6}\cdot \frac{T}{2}\) ovvero 
 $\SI{1.667}{\milli\second}$ la tensione \(V_{12}\) sarà maggiore 
-di \(V_{32}\); impulsando quindi il tiristore \(T1\_\) esso andrà in conduzione perchè, tramite la conduzione di \(T3\_\), il potenziale al suo catodo sarà V3 e quindi la tensione anodo-catodo sarà pari a \(V_{13} > 0 \).
+di \(V_{32}\); impulsando quindi il tiristore \(T1\_\) esso andrà in conduzione perchè, tramite la precedente conduzione di \(T3\_\), il potenziale al suo catodo sarà V3 e quindi la tensione anodo-catodo sarà pari a \(V_{13} > 0 \).
 In prima approssimazione è possibile considerare il tempo di commutazione nullo;
 la conduzione di \(T1\_\) porta il potenziale V1 al catodo di \(T3\_\) e 
 quindi la tensione \(V_{31} < 0\) ai suoi capi, ne consegue quindi
 l'interdizione di \(T3\_\).
 La conduzione di \(T1\_\) e \(T2\) porta sul carico la tensione \(V_{12}\).
+\medbreak
+Queste considerazioni si possono ripetere per le commutazioni successive, ipotizzando
+di impulsare i componenti quando due tensioni concatenate passano per lo zero si può 
+ottenere la seguente tabella:
+
+\begin{center}
+\begin{tabular}{c|c|c}
+  Tempo [$\SI{}{\milli\second}$]&Tiristore impulsato&Tensione sul carico\\ \hline
+  10/6 & \(T1\_\)  &  \(V_{12}\) \\
+  5 & \(T3\) & \(V_{13}\) \\
+  25/3 & \(T2\_\) &\(V_{23}\) \\
+  35/3 & \(T1\)& \(V_{21}\)  \\
+  15 & \(T3\_\)&\(V_{31}\) \\
+  55/3 & \(T2\) & \(V_{32}\)
+\end{tabular}
+\end{center}
+
+
+Poichè la frequenza di alimentazione può non essere necessariamente pari a 
+$\SI{50}{\hertz}$, è comodo rappresentare le tensioni in un dominio angolare anzichè 
+temporale, si fissa ovvero il periodo di tempo \(T\) pari ad un angolo giro ossia 
+\(2\pi\); il rapporto tra l'angolo giro e il periodo di una forma d'onda prende il
+nome di pulsazione \(\omega\) e si misura in $\SI{}{\radian\per\second}$.
 
 
 
