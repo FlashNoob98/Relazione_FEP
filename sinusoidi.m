@@ -60,3 +60,26 @@ legend('V_{12}','V_{13}','V_{23}','V_{21}','V_{31}','V_{32}');
 for n = 1:6
 p(n).LineWidth = plot_width;
 end
+
+%% plot coppolette
+
+ alpha = 0; %angolo in gradi
+ alpha = alpha*pi/180; %passo in radianti
+ T = 1/f*1000;
+ size = 1000;
+xx = zeros(7,size);
+ a = alpha*T/2/pi;
+for k=1:7
+    if k == 1
+       xx(k,:) = linspace(0+a,T/12+a,size);    
+    elseif k == 7
+       xx(k,:) = linspace(11/12*T+a,T+a,size);
+    else
+        xx(k,:) = linspace(xx(k-1,end),xx(k-1,end)+T/6+a,size);
+    end
+end
+
+figure(); hold on; grid on;
+% for k=1:7
+%    plot (xx(k),Vp*sqrt(3)*cos(xx(k)));
+% end
