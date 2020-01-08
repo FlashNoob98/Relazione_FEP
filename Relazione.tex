@@ -17,7 +17,7 @@
 \pdfinfo{%
   /Title    (Analisi ponte trifase total-controllato)
   /Author   (Olivieri Daniele)
-  /Creator  ()
+  /Creator  (Olivieri Daniele)
   /Producer ()
   /Subject  (Elettronica di Potenza)
   /Keywords (FEP, Power Electronics, Three Phase Converter)
@@ -47,21 +47,21 @@ Tensione ingresso 220 V starred
 
 \section{Norme tecniche che disciplinano la procedura di prova}
 Il comitato tecnico che disciplina l'elettronica di potenza è il CT 22 e la norma
-di riferimento per la prova è la CEI EN 60146 ``Convertitori a semiconduttore''.
+di riferimento per la prova è la CEI EN 60146: ``Convertitori a semiconduttore''.
 
 \section{Strumenti utilizzati}
 Per effettuare la prova sono stati utilizzati i seguenti strumenti di misura:
 \begin{itemize}
- \item Oscilloscopio a 4 canali Keysight DSO-X 2014A
- \item Trasduttore di corrente a 2 canali ad effetto Hall da 5 A, artigianale
+ \item Oscilloscopio a 4 canali Keysight DSO-X 2014A;
+ \item Trasduttore di corrente a 2 canali ad effetto Hall da 5 A, artigianale.
 \end{itemize}
 
 \section{Componenti utilizzati}
 I componenti sottoposti a prova sono sei tiristori \%INSERISCI MODELLO\%.
 L'alimentazione del ponte è fornita tramite un trasformatore trifase TTSK0.20 da 
 200 VA conforme alla norma di sicurezza CEI 96-7.
-Si può approssimare il rapporto tra le tensioni nominali del trasformatore al 
-rapporto di trasformazione pari a 9.524.
+Si può approssimare il rapporto tra le due tensioni nominali del trasformatore uguale al 
+rapporto di trasformazione pari quindi a 9.524.
 
 Il trasformatore è collegato a stella con neutro alla rete trifase con una tensione
 concatenata di $\SI{220}{\volt_{RMS}}$ mentre il secondario è collegato a stella 
@@ -73,8 +73,8 @@ un resistore in serie da $\SI{10}{\ohm}$.
 
 
 \section{Schema elettrico del circuito di prova}
-Il seguente schema rappresenta la struttura trifase in esame collegata ad un
-carico puramente resistivo.
+Il seguente schema rappresenta la struttura in esame con le relative sonde
+di misura.
 
 I trasduttori di corrente sono stati rappresentati con degli
 amperometri. Il voltmetro collegato al canale 1 permette di visualizzare la 
@@ -94,7 +94,7 @@ la corrente che circola nel carico.
 Un unico gate driver trifase appositamente realizzato gestisce il turn-on
 dei singoli tiristori.
 
-Il trasformatore trifase è a flusso vincolato dato che sono presenti 
+Il trasformatore trifase è a flusso vincolato poichè sono presenti 
 solo tre colonne, questa proprietà non è individuabile dallo schema in cui 
 è presente un banco trimonofase a flusso libero.
 
@@ -120,29 +120,28 @@ così rappresentabile:
  \label{fig:terna_trifase}
 \end{figure}
 
-Per l'andata in conduzione di un tiristore è necessario che si verifichino le seguenti
+Per il turn-on di un tiristore è necessario che si verifichino le seguenti
 condizioni:
 \begin{itemize}
- \item \(\exists\) una maglia di corrente possibile che coinvolga il componente
- \item \(V_{AK} \geq 0\) la tensione anodo-catodo sia maggiore di 0
+ \item \(\exists\) una maglia di corrente possibile che coinvolga il componente;
+ \item \(V_{AK} \geq 0\) la tensione anodo-catodo sia maggiore di 0;
  \item \(I_G \geq I_{GT}\) la corrente di gate sia maggiore di 
- un certo valore di soglia (trigger)
+ un certo valore di soglia (trigger).
 \end{itemize}
 È possibile dividere i tiristori in due gruppi, superiore ed inferiore. 
 
 Quelli del gruppo superiore \((T1,T2,T3)\) hanno gli anodi collegati tra loro
 e con il carico. Ai catodi invece, sono collegate le tre fasi e i tiristori 
-vedono le rispettive tensioni stellate rispetto al centro stella formatosi al 
-secondario del trasformatore.
+vedono le rispettive tensioni stellate riferite rispetto al centro stella formatosi al secondario del trasformatore.
 
 Per quanto riguarda i tiristori del gruppo inferiore \((T1\_,T2\_,T3\_)\) invece
 si presenta la situazione opposta, i catodi sono in comune tra essi e con il carico,
 gli anodi sono connessi all'alimentazione e quindi ai catodi dei tiristori del gruppo precedente.
 
 Trascurando la caduta di tensione sui tiristori si può assumere che, tramite un
-opportuno pilotaggio dei componenti, si può fornire al carico la tensione
-concatenata tra due fasi opportunamente scelte a valle del trasformatore.
-Si possono rappresentare le tensioni concatenate in un periodo nel seguente modo:
+opportuno driving dei componenti, si può fornire al carico la tensione
+concatenata tra due fasi opportunamente scelte.
+è possibile rappresentare le tensioni concatenate in un periodo di tempo nel seguente modo:
  \begin{figure}[H]
  \centering
  \includegraphics[keepaspectratio=true,width=0.95\linewidth]
@@ -152,7 +151,16 @@ Si possono rappresentare le tensioni concatenate in un periodo nel seguente modo
 \end{figure}
 
 Osservando l'immagine si suppone che inizialmente conducano i tiristori \(T3\_\) e \(T2\),
-dopo un tempo pari a \(\frac{1}{6}\) la tensione \(V_{13}\) è maggiore di \(V_{32}\)
+dopo un tempo pari a \(\frac{1}{6}\cdot \frac{T}{2}\) ovvero 
+$\SI{1.667}{\milli\second}$ la tensione \(V_{12}\) sarà maggiore 
+di \(V_{32}\); impulsando quindi il tiristore \(T1\_\) esso andrà in conduzione perchè, tramite la conduzione di \(T3\_\), il potenziale al suo catodo sarà V3 e quindi la tensione anodo-catodo sarà pari a \(V_{13} > 0 \).
+In prima approssimazione è possibile considerare il tempo di commutazione nullo;
+la conduzione di \(T1\_\) porta il potenziale V1 al catodo di \(T3\_\) e 
+quindi la tensione \(V_{31} < 0\) ai suoi capi, ne consegue quindi
+l'interdizione di \(T3\_\).
+La conduzione di \(T1\_\) e \(T2\) porta sul carico la tensione \(V_{12}\).
+
+
 
 Sia \(\alpha\) l'angolo d'impulso dei componenti, riferito rispetto al valore nullo
 delle tensioni concatenate
