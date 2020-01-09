@@ -13,9 +13,10 @@ N = V2n/V1n; %Rapporto di trasformazione definito al contrario per comodità
 
 %PARAMETRI PLOT
 plot_width = 2;
+size = 100;
 
 %CALCOLO
-t = linspace(0,periodi/f,1000);
+t = linspace(0,periodi/f,size);
 omega = 2*pi*f;
 Vp = sqrt(2)*Vrms;
 V1 = Vp*sin(omega*t);
@@ -66,7 +67,7 @@ end
  alpha = 0; %angolo in gradi
  alpha = alpha*pi/180; %passo in radianti
  T = 1/f*1000;
- size = 1000;
+
 xx = zeros(7,size);
  a = alpha*T/2/pi;
 for k=1:7
@@ -78,8 +79,22 @@ for k=1:7
         xx(k,:) = linspace(xx(k-1,end),xx(k-1,end)+T/6+a,size);
     end
 end
+%vabbè faccio prima a ridefinire tutto :)
 
 figure(); hold on; grid on;
+xlim([0 20]);
+yy = zeros(7,size);
+for k=1:7
+    if k ==1
+        yy(k,:) = N*sqrt(3)*Vp*cos(omega*xx(k,:)/1000);
+        plot(xx(k,:),yy(k,:));
+    else
+        yy(k,:) = N*sqrt(3)*Vp*sin(omega*xx(2,:)/1000);
+        plot(xx(k,:),1);
+    end
+end
+
+
 % for k=1:7
 %    plot (xx(k),Vp*sqrt(3)*cos(xx(k)));
 % end
