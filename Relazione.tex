@@ -4,6 +4,7 @@
 \usepackage[utf8]{inputenc}
 %\usepackage{mathtools}
 \usepackage{graphicx}
+\graphicspath{{img/}}
 \usepackage[italian]{babel}
 \usepackage{float}
 \usepackage{amsmath}
@@ -85,7 +86,7 @@ la corrente che circola nel carico.
 
 \begin{figure}[H]
  \centering
- \includegraphics[keepaspectratio=true,width=1\linewidth]{img/circuito_qucs.png}
+ \includegraphics[keepaspectratio=true,width=1\linewidth]{circuito_qucs.png}
  % circuito_qucs.png: 1193x395 px, 115dpi, 26.35x8.72 cm, bb=0 0 747 247
  \caption{Struttura e circuito di misura}
  \label{fig:circuito}
@@ -101,7 +102,7 @@ solo tre colonne, questa proprietà non è individuabile dallo schema in cui
 In seguito si riporta una foto del banco di prova:
 \begin{figure}[H]
  \centering
- \includegraphics[keepaspectratio=true,width=1\linewidth]{img/circuito_reale.png}
+ \includegraphics[keepaspectratio=true,width=1\linewidth]{circuito_reale.png}
  \caption{Circuito realizzato per la misura}
  \label{fig:circuito_reale}
 \end{figure}
@@ -114,7 +115,7 @@ così rappresentabile:
  \begin{figure}[H]
  \centering
  \includegraphics[keepaspectratio=true,width=0.95\linewidth]
- {img/sinusoidi_trifase.png}
+ {sinusoidi_trifase.png}
  % circuito_qucs.png: 1193x395 px, 115dpi, 26.35x8.72 cm, bb=0 0 747 247
  \caption{Terna trifase}
  \label{fig:terna_trifase}
@@ -145,7 +146,7 @@ concatenata tra due fasi opportunamente scelte.
  \begin{figure}[H]
  \centering
  \includegraphics[keepaspectratio=true,width=0.95\linewidth]
- {img/concatenate_carico.png}
+ {concatenate_carico.png}
  \caption{Andamento delle tensioni concatenate a valle del trasformatore}
  \label{fig:concatenate}
 \end{figure}
@@ -168,12 +169,12 @@ ottenere la seguente tabella:
 \begin{center}
 \begin{tabular}{c|c|c}
   Tempo [$\SI{}{\milli\second}$]&Tiristore impulsato&Tensione sul carico\\ \hline
-  10/6 & \(T1\_\)  &  \(V_{12}\) \\
-  5 & \(T3\) & \(V_{13}\) \\
-  25/3 & \(T2\_\) &\(V_{23}\) \\
-  35/3 & \(T1\)& \(V_{21}\)  \\
-  15 & \(T3\_\)&\(V_{31}\) \\
-  55/3 & \(T2\) & \(V_{32}\)
+  10/6 & \(T1\_\) & \(V_{12}\) \\
+  5    & \(T3\)   & \(V_{13}\) \\
+  25/3 & \(T2\_\) & \(V_{23}\) \\
+  35/3 & \(T1\)   & \(V_{21}\) \\
+  15   & \(T3\_\) & \(V_{31}\) \\
+  55/3 & \(T2\)   & \(V_{32}\)
 \end{tabular}
 \end{center}
 
@@ -192,7 +193,30 @@ per questo motivo si classifica come struttura total-controllata.
 modo tale da modificare la forma d'onda di tensione sul carico e soprattutto il suo valore medio.
 
 Sia \(\alpha\) l'angolo d'impulso dei componenti, riferito rispetto al valore nullo
-delle tensioni concatenate
+delle tensioni concatenate, è possibile calcolare il valore medio della tensione in uscita.
+Usando la definizione di media integrale per le funzioni periodiche:
+
+\begin{equation}
+ V_0 \stackrel{def}{=} \frac{1}{T}\int_T v_0(t) dt
+ \label{eq:def_media_integrale}
+\end{equation}
+Traslando l'intervallo di analisi in ritardo di un angolo pari a \(\frac{\pi}{6}\) 
+è possibile notare che le forme d'onda consecutive sono tutte identiche fra loro e pari %metti qua le coppolette se ci riesci
+a 6 in un periodo, sfruttando questa proprietà si può calcolare l'integrale per una forma d'onda e poi moltiplicarlo per 6.
+La forma d'onda da integrare è quindi la cuspide di un coseno, il valore medio di 
+tensione in uscita si calcola quindi nel seguente modo:
+\begin{equation}
+ V_0 = \frac{6}{2\pi} \int_{-\frac{\pi}{6}+\alpha}^{\frac{\pi}{6}+\alpha}
+ V\cdot \cos (\omega t)\ d\omega t
+ %\label{eq:}
+\end{equation}
+dove \(V\) è il valore di picco della tensione concatenata al secondario del trasformatore
+pari a \(N\cdot\sqrt2\sqrt3\cdot V_{IN_{RMS}} \) con \(N\) pari al rapporto di trasformazione
+e \(V_{IN_{RMS}} \) il valore efficace della tensione in ingresso (stellata).
+Ignorando il rapporto di trasformazione ci si riferirà per semplcità con \(V_{IN}\)
+alla tensione al secondario del trasformatore.
+%svolgi due conti, lo faccio più tardi mi scoccio
+
 \begin{equation}
  V_0 = \frac{3}{\pi} \sqrt{2} \sqrt{3} V_\lambda \cos\alpha
  \label{eq:valore_medio_tensione_ponte}
@@ -201,6 +225,16 @@ delle tensioni concatenate
 
 \section{Descrizione della prova eseguita}
 %Inserisci immagini circuito reale
+La prova è stata eseguita in un primo momento su un carico puramente resistivo, 
+è possibile vedere in seguito le forme d'onda di tensione e corrente, simili a quelle 
+descritte analiticamente:
+\begin{figure}
+ \includegraphics[keepaspectratio=true,width=0.9\linewidth]
+ {tensione_e_corrente_2.jpg}
+ \caption{Giallo: \(V_0\) \quad Verde: \(I_0\)}
+ \label{fig:tensioni_carico_R}
+\end{figure}
+
 
 \section{Risultati ottenuti}
 %In questa sezione inserisci le immagini dell'oscilloscopio
