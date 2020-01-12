@@ -225,15 +225,28 @@ alla tensione al secondario del trasformatore.
 
 \section{Descrizione della prova eseguita}
 %Inserisci immagini circuito reale
-La prova è stata eseguita in un primo momento su un carico puramente resistivo, 
+La prova è stata eseguita inizialmente su un carico puramente resistivo, 
 è possibile vedere in seguito le forme d'onda di tensione e corrente, simili a quelle 
 descritte analiticamente:
-\begin{figure}
+\begin{figure}[H]
+\centering
  \includegraphics[keepaspectratio=true,width=0.9\linewidth]
- {tensione_e_corrente_2.jpg}
- \caption{Giallo: \(V_0\) \quad Verde: \(I_0\)}
+ {tensione_e_corrente_2_neg.jpg}
+ \caption{Blu: \(V_0\)\quad Viola: \(I_0\)}
  \label{fig:tensioni_carico_R}
 \end{figure}
+È possibile leggere sul display dell'oscilloscopio il valore medio di tensione pari
+a $\SI{52.2}{\volt}$ e quello di corrente pari a $\SI{5.14}{\ampere}$ coerentemente
+con il fatto di avere un carico di $\SI{10}{\ohm}$.
+
+Analizzando le correnti di fase a monte e a valle del trasformatore... continua
+\begin{figure}[H]
+ \centering
+ \includegraphics[keepaspectratio=true,width=0.9\linewidth]
+ {correnti_FFT_2_neg.jpg}
+ \caption{Giallo: \(I_s\)\quad Verde: \(I_p\)}
+ \label{fig:correnti_fase_carico_R}
+ \end{figure}
 
 
 \section{Risultati ottenuti}
