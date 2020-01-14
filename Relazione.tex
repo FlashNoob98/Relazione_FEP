@@ -28,7 +28,7 @@
 \maketitle
 
 \begin{abstract}
- ciao ciao
+
 \end{abstract}
 
 \begin{comment}
@@ -59,10 +59,10 @@ Per effettuare la prova sono stati utilizzati i seguenti strumenti di misura:
 
 \section{Componenti utilizzati}
 I componenti sottoposti a prova sono sei tiristori \%INSERISCI MODELLO\%.
-L'alimentazione del ponte è fornita tramite un trasformatore trifase TTSK0.20 da 
-200 VA conforme alla norma di sicurezza CEI 96-7.
+L'alimentazione del ponte è fornita tramite un trasformatore trifase a flusso vincolato 
+TTSK0.20 da 200 VA conforme alla norma di sicurezza CEI 96-7.
 Si può approssimare il rapporto tra le due tensioni nominali del trasformatore uguale al 
-rapporto di trasformazione pari quindi a 9.524.
+rapporto di trasformazione e pari quindi a circa 9.5.
 
 Il trasformatore è collegato a stella con neutro alla rete trifase con una tensione
 concatenata di $\SI{220}{\volt_{RMS}}$ mentre il secondario è collegato a stella 
@@ -70,8 +70,6 @@ senza neutro alle tre gambe del ponte.
 
 Il carico è composto da un induttore da $\SI{100}{\milli\henry}$ e
 un resistore in serie da $\SI{10}{\ohm}$.
-
-
 
 \section{Schema elettrico del circuito di prova}
 Il seguente schema rappresenta la struttura in esame con le relative sonde
@@ -82,7 +80,6 @@ amperometri. Il voltmetro collegato al canale 1 permette di visualizzare la
 tensione sul carico, il voltmetro collegato al canale 2, tramite una costante di 
 attenuazione di valore pari alla resistenza, permette di misurare 
 la corrente che circola nel carico.
-
 
 \begin{figure}[H]
  \centering
@@ -133,7 +130,8 @@ condizioni:
 
 Quelli del gruppo superiore \((T1,T2,T3)\) hanno gli anodi collegati tra loro
 e con il carico. Ai catodi invece, sono collegate le tre fasi e i tiristori 
-vedono le rispettive tensioni stellate riferite rispetto al centro stella formatosi al secondario del trasformatore.
+vedono le rispettive tensioni stellate riferite rispetto al centro stella formatosi al secondario
+del trasformatore.
 
 Per quanto riguarda i tiristori del gruppo inferiore \((T1\_,T2\_,T3\_)\) invece
 si presenta la situazione opposta, i catodi sono in comune tra essi e con il carico,
@@ -142,7 +140,7 @@ gli anodi sono connessi all'alimentazione e quindi ai catodi dei tiristori del g
 Trascurando la caduta di tensione sui tiristori si può assumere che, tramite un
 opportuno driving dei componenti, si può fornire al carico la tensione
 concatenata tra due fasi opportunamente scelte.
-è possibile rappresentare le tensioni concatenate in un periodo di tempo nel seguente modo:
+È possibile rappresentare le tensioni concatenate in un periodo di tempo nel seguente modo:
  \begin{figure}[H]
  \centering
  \includegraphics[keepaspectratio=true,width=0.95\linewidth]
@@ -154,7 +152,9 @@ concatenata tra due fasi opportunamente scelte.
 Osservando l'immagine si suppone che inizialmente conducano i tiristori \(T3\_\) e \(T2\),
 dopo un tempo pari a \(\frac{1}{6}\cdot \frac{T}{2}\) ovvero 
 $\SI{1.667}{\milli\second}$ la tensione \(V_{12}\) sarà maggiore 
-di \(V_{32}\); impulsando quindi il tiristore \(T1\_\) esso andrà in conduzione perchè, tramite la precedente conduzione di \(T3\_\), il potenziale al suo catodo sarà V3 e quindi la tensione anodo-catodo sarà pari a \(V_{13} > 0 \).
+di \(V_{32}\); impulsando quindi il tiristore \(T1\_\) esso andrà in conduzione perchè, tramite 
+la precedente conduzione di \(T3\_\), il potenziale al suo catodo sarà V3 e quindi la tensione 
+anodo-catodo sarà pari a \(V_{13} > 0 \).
 In prima approssimazione è possibile considerare il tempo di commutazione nullo;
 la conduzione di \(T1\_\) porta il potenziale V1 al catodo di \(T3\_\) e 
 quindi la tensione \(V_{31} < 0\) ai suoi capi, ne consegue quindi
