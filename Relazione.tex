@@ -178,7 +178,6 @@ ottenere la seguente tabella:
 \end{tabular}
 \end{center}
 
-
 Poichè la frequenza di alimentazione può non essere necessariamente pari a 
 $\SI{50}{\hertz}$, è comodo rappresentare le tensioni in un dominio angolare anzichè 
 temporale, si fissa ovvero il periodo di tempo \(T\) pari ad un angolo giro ossia 
@@ -222,7 +221,6 @@ alla tensione al secondario del trasformatore.
  \label{eq:valore_medio_tensione_ponte}
 \end{equation}
 
-
 \section{Descrizione della prova eseguita}
 %Inserisci immagini circuito reale
 La prova è stata eseguita inizialmente su un carico puramente resistivo, 
@@ -239,7 +237,11 @@ descritte analiticamente:
 a $\SI{52.2}{\volt}$ e quello di corrente pari a $\SI{5.14}{\ampere}$ coerentemente
 con il fatto di avere un carico di $\SI{10}{\ohm}$.
 
-Analizzando le correnti di fase a monte e a valle del trasformatore... continua
+Analizzando le correnti di fase a monte e a valle del trasformatore si vede che il
+valore medio di corrente a monte del trasformatore è circa pari al 10\% della 
+corrente di picco mentre il valor medio di corrente al secondario è minore del 3\%
+del valore di picco.
+
 \begin{figure}[H]
  \centering
  \includegraphics[keepaspectratio=true,width=0.9\linewidth]
@@ -247,10 +249,14 @@ Analizzando le correnti di fase a monte e a valle del trasformatore... continua
  \caption{Giallo: \(I_s\)\quad Verde: \(I_p\)}
  \label{fig:correnti_fase_carico_R}
  \end{figure}
-
+Il trasformatore è collegato al primario con il neutro mentre il ponte è 
+alimentato con soli 3 fili, questo spiegherebbe la presenza di una corrente
+omopolare al primario. Osservando la FFT della corrente al primario, si notano la 
+presenza della fondamentale, della \ang{5} e della \ang{7} armonica; la terza 
+armonica, omopolare, circola nel neutro. È sicuramente vantaggioso quindi, ai fini 
+del THD, alimentare la struttura tramite un trasformatore.
 
 \section{Risultati ottenuti}
 %In questa sezione inserisci le immagini dell'oscilloscopio
-
 
 \end{document}
