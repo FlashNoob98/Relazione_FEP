@@ -10,6 +10,7 @@
 \usepackage{amsmath}
 \usepackage{verbatim}
 \usepackage{siunitx}
+\usepackage{cancel}
 
 \title{Analisi ponte trifase total-controllato}
 \author{Olivieri Daniele}
@@ -209,10 +210,19 @@ tensione in uscita si calcola quindi nel seguente modo:
  V\cdot \cos (\omega t)\ d\omega t
  %\label{eq:}
 \end{equation}
+Svolgendo i passaggi:
+\begin{align*}
+ V_0 &= \frac{3V}{\pi} \Big[\sin(\omega t) \Big]_{-\frac{\pi}{6}+\alpha}^{\frac{\pi}{6}+\alpha} = \\
+ &= \frac{3V}{\pi} \Big[\sin\left(\frac{\pi}{6}+\alpha \right) - \sin\left(-\frac{\pi}{6}+\alpha \right) \Big] = \\
+ &= \frac{3V}{\pi} \Big[\sin\left(\frac{\pi}{6} \right)\cos\alpha + \cos\left(\frac{\pi}{6}\right)\sin\alpha - \sin\alpha\cos\left(\frac{\pi}{6}\right) + \cos\alpha\sin\left(\frac{\pi}{6}\right) \Big] = \\
+ &=\frac{3V}{\pi}\Big[\sin\left(\frac{\pi}{6} \right)\cos\alpha + \cancel{\cos\left(\frac{\pi}{6}\right)\sin\alpha} - \cancel{\sin\alpha\cos\left(\frac{\pi}{6}\right)} + \cos\alpha\sin\left(\frac{\pi}{6}\right) \Big] = \\
+ &= \frac{3V}{\pi} \Big[2\cos\alpha\cdot\sin\left(\frac{\pi}{6}\right) \Big] \\
+ &= \frac{3V}{\pi} \Big[\cancel{2}\cos\alpha\cdot\cancel{\frac{1}{2}}\Big] = \frac{3V}{\pi}\cos\alpha
+\end{align*}
 dove \(V\) è il valore di picco della tensione concatenata al secondario del trasformatore
-pari a \(N\cdot\sqrt2\sqrt3\cdot V_{IN_{RMS}} \) con \(N\) pari al rapporto di trasformazione
-e \(V_{IN_{RMS}} \) il valore efficace della tensione in ingresso (stellata).
-Ignorando il rapporto di trasformazione ci si riferirà per semplcità con \(V_{IN}\)
+pari a \(N\cdot\sqrt2\sqrt3\cdot V_{\lambda} \) con \(N\) pari al rapporto di trasformazione
+e \(V_{\lambda} \) il valore efficace della tensione in ingresso (stellata).
+Ignorando il rapporto di trasformazione ci si riferirà per semplcità con \(V_{\lambda}\)
 alla tensione al secondario del trasformatore.
 %svolgi due conti, lo faccio più tardi mi scoccio
 
@@ -250,15 +260,19 @@ del valore di picco.
  \label{fig:correnti_fase_carico_R}
  \end{figure}
 Il trasformatore è collegato al primario con il neutro mentre il ponte è 
-alimentato con soli 3 fili, questo spiegherebbe la presenza di una corrente
-omopolare al primario. Osservando la FFT della corrente al primario, si notano la 
+alimentato con soli 3 fili, questo spiega la presenza di una corrente
+omopolare al primario. Osservando la FFT (Fast Fourier Transform) della corrente al 
+primario, si notano la 
 presenza della fondamentale, della \ang{5} e della \ang{7} armonica; la terza 
 armonica, omopolare, circola nel neutro. È sicuramente vantaggioso quindi, ai fini 
 del THD, alimentare la struttura tramite un trasformatore.
 \medskip
 
 Inserendo nel carico anche l'induttore è possibile vedere la variazione della forma
-d'onda di corrente
+d'onda di corrente che non assume più la forma a cuspide ma assume andamenti 
+esponenziali smorzati; è ad ogni modo molto più filtrata rispetto al caso con carico
+puramente resistivo.
+
 
 \begin{figure}[H]
  \centering
