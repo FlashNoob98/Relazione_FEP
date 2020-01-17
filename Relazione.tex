@@ -216,7 +216,7 @@ Svolgendo i passaggi:
  &= \frac{3V}{\pi} \Big[\sin\left(\frac{\pi}{6}+\alpha \right) - \sin\left(-\frac{\pi}{6}+\alpha \right) \Big] = \\
  &= \frac{3V}{\pi} \Big[\sin\left(\frac{\pi}{6} \right)\cos\alpha + \cos\left(\frac{\pi}{6}\right)\sin\alpha - \sin\alpha\cos\left(\frac{\pi}{6}\right) + \cos\alpha\sin\left(\frac{\pi}{6}\right) \Big] = \\
  &=\frac{3V}{\pi}\Big[\sin\left(\frac{\pi}{6} \right)\cos\alpha + \cancel{\cos\left(\frac{\pi}{6}\right)\sin\alpha} - \cancel{\sin\alpha\cos\left(\frac{\pi}{6}\right)} + \cos\alpha\sin\left(\frac{\pi}{6}\right) \Big] = \\
- &= \frac{3V}{\pi} \Big[2\cos\alpha\cdot\sin\left(\frac{\pi}{6}\right) \Big] \\
+ &= \frac{3V}{\pi} \Big[2\cos\alpha\cdot\sin\left(\frac{\pi}{6}\right) \Big]= \\
  &= \frac{3V}{\pi} \Big[\cancel{2}\cos\alpha\cdot\cancel{\frac{1}{2}}\Big] = \frac{3V}{\pi}\cos\alpha
 \end{align*}
 dove \(V\) è il valore di picco della tensione concatenata al secondario del trasformatore
@@ -224,12 +224,34 @@ pari a \(N\cdot\sqrt2\sqrt3\cdot V_{\lambda} \) con \(N\) pari al rapporto di tr
 e \(V_{\lambda} \) il valore efficace della tensione in ingresso (stellata).
 Ignorando il rapporto di trasformazione ci si riferirà per semplcità con \(V_{\lambda}\)
 alla tensione al secondario del trasformatore.
-%svolgi due conti, lo faccio più tardi mi scoccio
+In conclusione si ottiene:
 
 \begin{equation}
  V_0 = \frac{3}{\pi} \sqrt{2} \sqrt{3} V_\lambda \cos\alpha
  \label{eq:valore_medio_tensione_ponte}
 \end{equation}
+%Inserisci funzionamento da inverter
+È possibile ora calcolare il valore efficace della tensione in uscita al variare 
+dell'angolo \(\alpha\) mediante la definizione:
+\begin{equation}
+V_{RMS} = \sqrt{\frac{1}{T}\int_T f^2(x)dx}
+\end{equation}
+svolgendo i calcoli:
+\begin{align*}
+V_{RMS} &= \sqrt{\frac{6}{2\pi}\int_{-\frac{\pi}{6}+\alpha}^{\frac{\pi}{6}+\alpha}V^2\cdot \cos^2(\omega t) d\omega t  } = \\
+&= \frac{\sqrt{3}}{\sqrt{\pi}}V \cdot \sqrt{\int_{-\frac{\pi}{6}+\alpha}^{\frac{\pi}{6}+\alpha} \cos^2(\omega t) d\omega t  } = \\
+&= \frac{\sqrt{3}}{\sqrt{\pi}}\sqrt{2} \sqrt{3} V_\lambda\cdot \sqrt{\int_{-\frac{\pi}{6}+\alpha}^{\frac{\pi}{6}+\alpha} \frac{1+\cos(2\omega t)}{2}d\omega t } = \\
+&= \frac{3\sqrt{2}V_{\lambda}}{\sqrt{\pi}}\cdot \sqrt{\frac{1}{2}\cdot\frac{\pi}{3} + \int_{-\frac{\pi}{6}+\alpha}^{\frac{\pi}{6}+\alpha} \frac{\cos(2\omega t)}{2}d\omega t } =\\
+&= \frac{3\sqrt{2}V_{\lambda}}{\sqrt{\pi}}\cdot \sqrt{ \frac{\pi}{6} +\frac{1}{4}\Big[\sin(2\omega t)\Big]_{-\frac{\pi}{6}+\alpha}^{\frac{\pi}{6}+\alpha} } =\\
+&= \frac{3\sqrt{2}V_{\lambda}}{\sqrt{\pi}}\cdot \sqrt{\frac{\pi}{6} + \frac{1}{4}\left[\sin\left(\frac{\pi}{3}+2\alpha\right) - \sin\left(\frac{-\pi}{3}+2\alpha\right)\right] }= \\
+&= \frac{3\sqrt{2}V_{\lambda}}{\sqrt{\pi}}\cdot \sqrt{\frac{\pi}{6} + \frac{1}{4}\left[\sin\left(\frac{\pi}{3}\right)\cos(2\alpha) + \cancel{\cos\left(\frac{\pi}{3}\right)\sin(2\alpha)} -\cancel{\sin(2\alpha)\cos\left(\frac{\pi}{3}\right)} + \cos(2\alpha)\sin\left(\frac{\pi}{3}\right)\right]  } =\\
+&=\frac{3\sqrt{2}V_{\lambda}}{\sqrt{\pi}}\cdot \sqrt{\frac{\pi}{6} + \frac{\sqrt{3}}{4}\cos(2\alpha) } = \sqrt{3V_\lambda + \frac{9\sqrt{3}}{2\pi}\cos(2\alpha)}
+\end{align*}
+\subsection{Indici di prestazione}
+È utile il calcolo degli indici di prestazione della struttura.
+\subsubsection{Ripple Factor}
+Il Ripple Factor è un indice di qualità della forma d'onda in uscita, confronta
+il valore efficace 
 
 \section{Descrizione della prova eseguita}
 %Inserisci immagini circuito reale
