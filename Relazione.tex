@@ -245,13 +245,29 @@ V_{RMS} &= \sqrt{\frac{6}{2\pi}\int_{-\frac{\pi}{6}+\alpha}^{\frac{\pi}{6}+\alph
 &= \frac{3\sqrt{2}V_{\lambda}}{\sqrt{\pi}}\cdot \sqrt{ \frac{\pi}{6} +\frac{1}{4}\Big[\sin(2\omega t)\Big]_{-\frac{\pi}{6}+\alpha}^{\frac{\pi}{6}+\alpha} } =\\
 &= \frac{3\sqrt{2}V_{\lambda}}{\sqrt{\pi}}\cdot \sqrt{\frac{\pi}{6} + \frac{1}{4}\left[\sin\left(\frac{\pi}{3}+2\alpha\right) - \sin\left(\frac{-\pi}{3}+2\alpha\right)\right] }= \\
 &= \frac{3\sqrt{2}V_{\lambda}}{\sqrt{\pi}}\cdot \sqrt{\frac{\pi}{6} + \frac{1}{4}\left[\sin\left(\frac{\pi}{3}\right)\cos(2\alpha) + \cancel{\cos\left(\frac{\pi}{3}\right)\sin(2\alpha)} -\cancel{\sin(2\alpha)\cos\left(\frac{\pi}{3}\right)} + \cos(2\alpha)\sin\left(\frac{\pi}{3}\right)\right]  } =\\
-&=\frac{3\sqrt{2}V_{\lambda}}{\sqrt{\pi}}\cdot \sqrt{\frac{\pi}{6} + \frac{\sqrt{3}}{4}\cos(2\alpha) } = \sqrt{3V_\lambda + \frac{9\sqrt{3}}{2\pi}\cos(2\alpha)}
+&=\frac{3\sqrt{2}V_{\lambda}}{\sqrt{\pi}}\cdot \sqrt{\frac{\pi}{6} + \frac{\sqrt{3}}{4}\cos(2\alpha) } = \sqrt{3V_\lambda^2 + \frac{9\sqrt{3}}{2\pi}V_\lambda^2\cos(2\alpha)}
 \end{align*}
 \subsection{Indici di prestazione}
 È utile il calcolo degli indici di prestazione della struttura.
 \subsubsection{Ripple Factor}
 Il Ripple Factor è un indice di qualità della forma d'onda in uscita, confronta
-il valore efficace 
+il valore efficace di una grandezza, come ad esempio la tensione sul carico, con il 
+suo valore medio mediante la seguente definizione:
+\begin{equation}
+ RF \stackrel{def}{=} \sqrt{\frac{V_{rms}^2}{V_0^2}-1}
+ \label{eq:ripple_factor}
+\end{equation}
+Sostituendo le espressioni prima trovate si ottiene la seguente funzione:
+\begin{equation*}
+ RF(V_0) = \sqrt{\frac{3+\frac{9\sqrt{3}}{2\pi}\cos(2\alpha)}{\frac{54}{\pi^2}\cos^2(\alpha)}-1}
+\end{equation*}
+\begin{figure}[H]
+ \centering
+ \includegraphics[keepaspectratio=true,width=0.9\linewidth]
+ {RFV_0.png}
+ \caption{Andamento RF in funzione di \(\alpha\)}
+\end{figure}
+Il RF minimo per un angolo \(\alpha\) nullo è quindi pari al 4\%.
 
 \section{Descrizione della prova eseguita}
 %Inserisci immagini circuito reale
