@@ -93,7 +93,7 @@ la corrente che circola nel carico.
 Un unico gate driver trifase appositamente realizzato gestisce il turn-on
 dei singoli tiristori.
 
-Il trasformatore trifase è a flusso vincolato poichè sono presenti 
+Il trasformatore trifase è a flusso vincolato poiché sono presenti 
 solo tre colonne, questa proprietà non è individuabile dallo schema in cui 
 è presente un banco trimonofase a flusso libero.
 
@@ -153,7 +153,7 @@ concatenata tra due fasi opportunamente scelte.
 Osservando l'immagine si suppone che inizialmente conducano i tiristori \(T3\_\) e \(T2\),
 dopo un tempo pari a \(\frac{1}{6}\cdot \frac{T}{2}\) ovvero 
 $\SI{1.667}{\milli\second}$ la tensione \(V_{12}\) sarà maggiore 
-di \(V_{32}\); impulsando quindi il tiristore \(T1\_\) esso andrà in conduzione perchè, tramite 
+di \(V_{32}\); impulsando quindi il tiristore \(T1\_\) esso andrà in conduzione perché, tramite 
 la precedente conduzione di \(T3\_\), il potenziale al suo catodo sarà V3 e quindi la tensione 
 anodo-catodo sarà pari a \(V_{13} > 0 \).
 In prima approssimazione è possibile considerare il tempo di commutazione nullo;
@@ -179,8 +179,8 @@ ottenere la seguente tabella:
 \end{tabular}
 \end{center}
 
-Poichè la frequenza di alimentazione può non essere necessariamente pari a 
-$\SI{50}{\hertz}$, è comodo rappresentare le tensioni in un dominio angolare anzichè 
+Poiché la frequenza di alimentazione può non essere necessariamente pari a 
+$\SI{50}{\hertz}$, è comodo rappresentare le tensioni in un dominio angolare anziché 
 temporale, si fissa ovvero il periodo di tempo \(T\) pari ad un angolo giro ossia 
 \(2\pi\); il rapporto tra l'angolo giro e il periodo di una forma d'onda prende il
 nome di pulsazione \(\omega\) e si misura in $\SI{}{\radian\per\second}$.
@@ -222,7 +222,7 @@ Svolgendo i passaggi:
 dove \(V\) è il valore di picco della tensione concatenata al secondario del trasformatore
 pari a \(N\cdot\sqrt2\sqrt3\cdot V_{\lambda} \) con \(N\) pari al rapporto di trasformazione
 e \(V_{\lambda} \) il valore efficace della tensione in ingresso (stellata).
-Ignorando il rapporto di trasformazione ci si riferirà per semplcità con \(V_{\lambda}\)
+Ignorando il rapporto di trasformazione ci si riferirà per semplicità con \(V_{\lambda}\)
 alla tensione al secondario del trasformatore.
 In conclusione si ottiene:
 
@@ -244,7 +244,7 @@ V_{RMS} &= \sqrt{\frac{6}{2\pi}\int_{-\frac{\pi}{6}+\alpha}^{\frac{\pi}{6}+\alph
 &= \frac{3\sqrt{2}V_{\lambda}}{\sqrt{\pi}}\cdot \sqrt{\frac{1}{2}\cdot\frac{\pi}{3} + \int_{-\frac{\pi}{6}+\alpha}^{\frac{\pi}{6}+\alpha} \frac{\cos(2\omega t)}{2}d\omega t } =\\
 &= \frac{3\sqrt{2}V_{\lambda}}{\sqrt{\pi}}\cdot \sqrt{ \frac{\pi}{6} +\frac{1}{4}\Big[\sin(2\omega t)\Big]_{-\frac{\pi}{6}+\alpha}^{\frac{\pi}{6}+\alpha} } =\\
 &= \frac{3\sqrt{2}V_{\lambda}}{\sqrt{\pi}}\cdot \sqrt{\frac{\pi}{6} + \frac{1}{4}\left[\sin\left(\frac{\pi}{3}+2\alpha\right) - \sin\left(\frac{-\pi}{3}+2\alpha\right)\right] }= \\
-&= \frac{3\sqrt{2}V_{\lambda}}{\sqrt{\pi}}\cdot \sqrt{\frac{\pi}{6} + \frac{1}{4}\left[\sin\left(\frac{\pi}{3}\right)\cos(2\alpha) + \cancel{\cos\left(\frac{\pi}{3}\right)\sin(2\alpha)} -\cancel{\sin(2\alpha)\cos\left(\frac{\pi}{3}\right)} + \cos(2\alpha)\sin\left(\frac{\pi}{3}\right)\right]  } =\\
+&= \frac{3\sqrt{2}V_{\lambda}}{\sqrt{\pi}}\cdot \sqrt{\frac{\pi}{6} + \frac{1}{4}\left[2\cdot\sin\left(\frac{\pi}{3}\right)\cos(2\alpha) + \cancel{\cos\left(\frac{\pi}{3}\right)\sin(2\alpha)} -\cancel{\sin(2\alpha)\cos\left(\frac{\pi}{3}\right)} \right]  } =\\
 &=\frac{3\sqrt{2}V_{\lambda}}{\sqrt{\pi}}\cdot \sqrt{\frac{\pi}{6} + \frac{\sqrt{3}}{4}\cos(2\alpha) } = \sqrt{3V_\lambda^2 + \frac{9\sqrt{3}}{2\pi}V_\lambda^2\cos(2\alpha)}
 \end{align*}
 \subsection{Indici di prestazione}
@@ -272,10 +272,11 @@ Il RF minimo per un angolo \(\alpha\) nullo è quindi pari al 4\%.
 \subsubsection{THD}
 Il `Total Harmonic Distortion' è un indice che valuta il peso del contenuto armonico
 di una forma d'onda. È interessante calcolarlo per la forma di corrente a monte del
-trasformatore poichè, il fornitore di energia elettrica, può applicare una sovrattassa
+trasformatore poiché, il fornitore di energia elettrica, può applicare una sovrattassa
 se si assorbe dalla rete una corrente molto deformata e ricca di armoniche.
 \begin{equation}
- THD \stackrel{=}{def}
+ THD \stackrel{def}{=} \sqrt{\left(\frac{I_{rms}}{I_{rms_{1}}}\right)^2-1}
+ \label{eq:THD}
 \end{equation}
 
 \section{Descrizione della prova eseguita}
@@ -296,7 +297,7 @@ con il fatto di avere un carico di $\SI{10}{\ohm}$.
 
 Analizzando le correnti di fase a monte e a valle del trasformatore si vede che il
 valore medio di corrente a monte del trasformatore è circa pari al 10\% della 
-corrente di picco mentre il valor medio di corrente al secondario è minore del 3\%
+corrente di picco mentre il valore medio di corrente al secondario è minore del 3\%
 del valore di picco.
 
 \begin{figure}[H]
