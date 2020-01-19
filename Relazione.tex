@@ -225,12 +225,15 @@ e \(V_{\lambda} \) il valore efficace della tensione in ingresso (stellata).
 Ignorando il rapporto di trasformazione ci si riferirà per semplicità con \(V_{\lambda}\)
 alla tensione al secondario del trasformatore.
 In conclusione si ottiene:
-
 \begin{equation}
  V_0 = \frac{3}{\pi} \sqrt{2} \sqrt{3} V_\lambda \cos\alpha
  \label{eq:valore_medio_tensione_ponte}
 \end{equation}
-%Inserisci funzionamento da inverter
+Se l'angolo \(\alpha\) è maggiore di \(\frac{\pi}{2}\) il valore medio di tensione
+è negativo, ciò significa che si inverte il flusso di potenza: se si dispone di una
+sorgente attiva a valle della struttura, questa fornirà potenza alla rete. Questo 
+tipo di funzionamento si dice `da inverter' proprio perché il flusso di potenza è invertito.
+
 \subsection{Valore efficace tensione in uscita}
 È possibile ora calcolare il valore efficace della tensione in uscita al variare 
 dell'angolo \(\alpha\) mediante la definizione di valore efficace:
@@ -316,13 +319,14 @@ sostituendo si ottiene:
  &= \frac{2I_0}{k\pi}\left[-\cos(k\omega t)\right]_{\frac{\pi}{6}}^{\frac{5\pi}{6}} =\\
  &=\frac{2I_0}{k\pi}\left(\cos k\frac{\pi}{6}-\cos k\frac{5\pi}{6}\right) =\\
  \text{con k=1 }&= \frac{2I_0}{\pi}\left(\frac{\sqrt{3}}{2} + \frac{\sqrt{3}}{2}  \right) \\
-  I_k &= \frac{\sqrt{2}\sqrt{3}I_0}{\pi}
+  I_1 &= \frac{\sqrt{2}\sqrt{3}I_0}{\pi}
 \end{align*}
 Si calcola quindi il THD:
 \begin{align*}
  THD(I) &= \sqrt{\left(\frac{\cancel{I_0}\sqrt{\frac{\cancel{2}}{3}}}{\frac{\cancel{\sqrt{2}}\sqrt{3}\cancel{I_0}}{\pi}}\right)^2-1  } = \\
  &= \sqrt{\left(\frac{\pi}{3}  \right)^2 -1 } = 31.1\%
 \end{align*}
+
 \section{Descrizione della prova eseguita}
 %Inserisci immagini circuito reale
 La prova è stata eseguita inizialmente su un carico puramente resistivo, 
