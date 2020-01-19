@@ -1,4 +1,4 @@
-\documentclass[a4paper,10pt]{article}
+\documentclass[a4paper,11pt]{article}
 
 
 \usepackage[utf8]{inputenc}
@@ -84,7 +84,7 @@ la corrente che circola nel carico.
 
 \begin{figure}[H]
  \centering
- \includegraphics[keepaspectratio=true,width=1\linewidth]{circuito_qucs.png}
+ \includegraphics[keepaspectratio=true,width=0.95\linewidth]{circuito_qucs.png}
  % circuito_qucs.png: 1193x395 px, 115dpi, 26.35x8.72 cm, bb=0 0 747 247
  \caption{Struttura e circuito di misura}
  \label{fig:circuito}
@@ -100,7 +100,7 @@ solo tre colonne, questa proprietà non è individuabile dallo schema in cui
 In seguito si riporta una foto del banco di prova:
 \begin{figure}[H]
  \centering
- \includegraphics[keepaspectratio=true,width=1\linewidth]{circuito_reale.png}
+ \includegraphics[keepaspectratio=true,width=0.9\linewidth]{circuito_reale.png}
  \caption{Circuito realizzato per la misura}
  \label{fig:circuito_reale}
 \end{figure}
@@ -112,7 +112,7 @@ così rappresentabile:
 
  \begin{figure}[H]
  \centering
- \includegraphics[keepaspectratio=true,width=0.95\linewidth]
+ \includegraphics[keepaspectratio=true,width=0.85\linewidth]
  {sinusoidi_trifase.png}
  % circuito_qucs.png: 1193x395 px, 115dpi, 26.35x8.72 cm, bb=0 0 747 247
  \caption{Terna trifase}
@@ -144,15 +144,15 @@ concatenata tra due fasi opportunamente scelte.
 È possibile rappresentare le tensioni concatenate in un periodo di tempo nel seguente modo:
  \begin{figure}[H]
  \centering
- \includegraphics[keepaspectratio=true,width=0.95\linewidth]
+ \includegraphics[keepaspectratio=true,width=0.85\linewidth]
  {concatenate_carico.png}
  \caption{Andamento delle tensioni concatenate a valle del trasformatore}
  \label{fig:concatenate}
 \end{figure}
 
 Osservando l'immagine si suppone che inizialmente conducano i tiristori \(T3\_\) e \(T2\),
-dopo un tempo pari a \(\frac{1}{6}\cdot \frac{T}{2}\) ovvero 
-$\SI{1.667}{\milli\second}$ la tensione \(V_{12}\) sarà maggiore 
+dopo un tempo pari a \(\frac{1}{6}\cdot \frac{T}{2}\), ossia
+$\SI{1.667}{\milli\second}$, la tensione \(V_{12}\) sarà maggiore 
 di \(V_{32}\); impulsando quindi il tiristore \(T1\_\) esso andrà in conduzione perché, tramite 
 la precedente conduzione di \(T3\_\), il potenziale al suo catodo sarà V3 e quindi la tensione 
 anodo-catodo sarà pari a \(V_{13} > 0 \).
@@ -214,7 +214,7 @@ Svolgendo i passaggi:
 \begin{align*}
  V_0 &= \frac{3V}{\pi} \Big[\sin(\omega t) \Big]_{-\frac{\pi}{6}+\alpha}^{\frac{\pi}{6}+\alpha} = \\
  &= \frac{3V}{\pi} \Big[\sin\left(\frac{\pi}{6}+\alpha \right) - \sin\left(-\frac{\pi}{6}+\alpha \right) \Big] = \\
- &= \frac{3V}{\pi} \Big[\sin\left(\frac{\pi}{6} \right)\cos\alpha + \cos\left(\frac{\pi}{6}\right)\sin\alpha - \sin\alpha\cos\left(\frac{\pi}{6}\right) + \cos\alpha\sin\left(\frac{\pi}{6}\right) \Big] = \\
+ %&= \frac{3V}{\pi} \Big[\sin\left(\frac{\pi}{6} \right)\cos\alpha + \cos\left(\frac{\pi}{6}\right)\sin\alpha - \sin\alpha\cos\left(\frac{\pi}{6}\right) + \cos\alpha\sin\left(\frac{\pi}{6}\right) \Big] = \\
  &=\frac{3V}{\pi}\Big[\sin\left(\frac{\pi}{6} \right)\cos\alpha + \cancel{\cos\left(\frac{\pi}{6}\right)\sin\alpha} - \cancel{\sin\alpha\cos\left(\frac{\pi}{6}\right)} + \cos\alpha\sin\left(\frac{\pi}{6}\right) \Big] = \\
  &= \frac{3V}{\pi} \Big[2\cos\alpha\cdot\sin\left(\frac{\pi}{6}\right) \Big]= \\
  &= \frac{3V}{\pi} \Big[\cancel{2}\cos\alpha\cdot\cancel{\frac{1}{2}}\Big] = \frac{3V}{\pi}\cos\alpha
@@ -244,9 +244,10 @@ V_{RMS} &= \sqrt{\frac{6}{2\pi}\int_{-\frac{\pi}{6}+\alpha}^{\frac{\pi}{6}+\alph
 &= \frac{3\sqrt{2}V_{\lambda}}{\sqrt{\pi}}\cdot \sqrt{\frac{1}{2}\cdot\frac{\pi}{3} + \int_{-\frac{\pi}{6}+\alpha}^{\frac{\pi}{6}+\alpha} \frac{\cos(2\omega t)}{2}d\omega t } =\\
 &= \frac{3\sqrt{2}V_{\lambda}}{\sqrt{\pi}}\cdot \sqrt{ \frac{\pi}{6} +\frac{1}{4}\Big[\sin(2\omega t)\Big]_{-\frac{\pi}{6}+\alpha}^{\frac{\pi}{6}+\alpha} } =\\
 &= \frac{3\sqrt{2}V_{\lambda}}{\sqrt{\pi}}\cdot \sqrt{\frac{\pi}{6} + \frac{1}{4}\left[\sin\left(\frac{\pi}{3}+2\alpha\right) - \sin\left(\frac{-\pi}{3}+2\alpha\right)\right] }= \\
-&= \frac{3\sqrt{2}V_{\lambda}}{\sqrt{\pi}}\cdot \sqrt{\frac{\pi}{6} + \frac{1}{4}\left[2\cdot\sin\left(\frac{\pi}{3}\right)\cos(2\alpha) + \cancel{\cos\left(\frac{\pi}{3}\right)\sin(2\alpha)} -\cancel{\sin(2\alpha)\cos\left(\frac{\pi}{3}\right)} \right]  } =\\
+= \frac{3\sqrt{2}V_{\lambda}}{\sqrt{\pi}}&\sqrt{\frac{\pi}{6} + \frac{1}{4}\left[2\cdot\sin\left(\frac{\pi}{3}\right)\cos(2\alpha) + \cancel{\cos\left(\frac{\pi}{3}\right)\sin(2\alpha)} -\cancel{\sin(2\alpha)\cos\left(\frac{\pi}{3}\right)} \right]  }\\
 &=\frac{3\sqrt{2}V_{\lambda}}{\sqrt{\pi}}\cdot \sqrt{\frac{\pi}{6} + \frac{\sqrt{3}}{4}\cos(2\alpha) } = \sqrt{3V_\lambda^2 + \frac{9\sqrt{3}}{2\pi}V_\lambda^2\cos(2\alpha)}
 \end{align*}
+
 \subsection{Indici di prestazione}
 È utile il calcolo degli indici di prestazione della struttura.
 \subsubsection{Ripple Factor}
@@ -263,7 +264,7 @@ Sostituendo le espressioni prima trovate si ottiene la seguente funzione:
 \end{equation*}
 \begin{figure}[H]
  \centering
- \includegraphics[keepaspectratio=true,width=0.9\linewidth]
+ \includegraphics[keepaspectratio=true,width=0.8\linewidth]
  {RFV_0.png}
  \caption{Andamento RF in funzione di \(\alpha\)}
 \end{figure}
@@ -278,6 +279,7 @@ se si assorbe dalla rete una corrente molto deformata e ricca di armoniche.
  THD \stackrel{def}{=} \sqrt{\left(\frac{I_{rms}}{I_{rms_{1}}}\right)^2-1}
  \label{eq:THD}
 \end{equation}
+
 
 \section{Descrizione della prova eseguita}
 %Inserisci immagini circuito reale
