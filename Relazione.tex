@@ -184,8 +184,8 @@ $\SI{50}{\hertz}$, è comodo rappresentare le tensioni in un dominio angolare an
 temporale, si fissa ovvero il periodo di tempo \(T\) pari ad un angolo giro ossia 
 \(2\pi\); il rapporto tra l'angolo giro e il periodo di una forma d'onda prende il
 nome di pulsazione \(\omega\) e si misura in $\SI{}{\radian\per\second}$.
-\smallskip
 
+\subsection{Valore medio di tensione in uscita}
 Nonostante il tiristore sia un componente controllabile solo nel turn-on, questa 
 struttura permette la commutazione forzata dal turn-on di un secondo tiristore,
 per questo motivo si classifica come struttura total-controllata.
@@ -202,7 +202,7 @@ Usando la definizione di media integrale per le funzioni periodiche:
 \end{equation}
 Traslando l'intervallo di analisi in ritardo di un angolo pari a \(\frac{\pi}{6}\) 
 è possibile notare che le forme d'onda consecutive sono tutte identiche fra loro e pari %metti qua le coppolette se ci riesci
-a 6 in un periodo, sfruttando questa proprietà si può calcolare l'integrale per una forma d'onda e poi moltiplicarlo per 6.
+a 6 in un periodo, sfruttando questa proprietà si può calcolare l'integrale per una singola forma d'onda e poi moltiplicarlo per 6.
 La forma d'onda da integrare è quindi la cuspide di un coseno, il valore medio di 
 tensione in uscita si calcola quindi nel seguente modo:
 \begin{equation}
@@ -231,8 +231,9 @@ In conclusione si ottiene:
  \label{eq:valore_medio_tensione_ponte}
 \end{equation}
 %Inserisci funzionamento da inverter
+\subsection{Valore efficace tensione in uscita}
 È possibile ora calcolare il valore efficace della tensione in uscita al variare 
-dell'angolo \(\alpha\) mediante la definizione:
+dell'angolo \(\alpha\) mediante la definizione di valore efficace:
 \begin{equation}
 V_{RMS} = \sqrt{\frac{1}{T}\int_T f^2(x)dx}
 \end{equation}
@@ -249,7 +250,8 @@ V_{RMS} &= \sqrt{\frac{6}{2\pi}\int_{-\frac{\pi}{6}+\alpha}^{\frac{\pi}{6}+\alph
 \end{align*}
 
 \subsection{Indici di prestazione}
-È utile il calcolo degli indici di prestazione della struttura.
+È utile il calcolo degli indici di prestazione della struttura al fine di poterla
+confrontare con altri raddrizzatori a semiconduttore.
 \subsubsection{Ripple Factor}
 Il Ripple Factor è un indice di qualità della forma d'onda in uscita, confronta
 il valore efficace di una grandezza, come ad esempio la tensione sul carico, con il 
@@ -279,8 +281,48 @@ se si assorbe dalla rete una corrente molto deformata e ricca di armoniche.
  THD \stackrel{def}{=} \sqrt{\left(\frac{I_{rms}}{I_{rms_{1}}}\right)^2-1}
  \label{eq:THD}
 \end{equation}
+Per calcolare questo indice è quindi necessario conoscere la forma d'onda di corrente
+di fase della struttura e calcolarne il valore efficace complessivo e della prima 
+armonica.
+\smallskip
 
+\textbf{Valore efficace corrente}\\
+Conoscendo i tempi di conduzione dei tiristori precedentemente ricavati, si può 
+supporre che la corrente attraversi un ramo del trasformatore in un verso per i 
+\(\frac{2}{3}\) di un semi periodo e nell'altro verso per altri \(\frac{2}{3}\)
+del secondo semi periodo.
 
+Supponendo per semplicità una corrente costante \(I_0\) nel carico (nel caso R-L) il valore
+efficace si calcola nel seguente modo:
+\begin{align*}
+ I_{rms} &= \sqrt{\frac{1}{\cancel2\pi}\left(I_0^2\cdot\frac{\cancel2\pi}{3}+I_0^2\cdot
+ \frac{\cancel2\pi}{3} \right)}=\\
+ &=I_0\cdot\sqrt{\frac{1}{\cancel{\pi}}\frac{2\cancel{\pi}}{3}} = I_0\cdot\sqrt{\frac{2}{3}}
+\end{align*}
+\smallskip
+
+\textbf{Valore efficace prima armonica}\\
+Preso in considerazione un sistema di riferimento che abbia l'origine posizionato
+in maniera tale da rendere la forma d'onda dispari, essa potrà essere scomposta
+in serie di Fourier con termini di soli seni.\\
+Il coefficiente della serie \(b_k\) si calcola nel seguente modo:
+\begin{equation}
+ b_k \stackrel{def}{=} \frac{2}{T}\int_0^t I(t)\sin(k\omega t) dt
+\end{equation}
+sostituendo si ottiene:
+\begin{align*}
+ \sqrt{2}I_k &= \frac{2}{\cancel{2}\pi}\cdot \cancel{2}\int_{0}^{\pi}i(t)\sin(k\omega t) d\omega t =\\
+ &=\frac{2}{\pi}\int_{\frac{\pi}{6}}^{\frac{5\pi}{6}}I_0\sin(k\omega t)d\omega t=\\
+ &= \frac{2I_0}{k\pi}\left[-\cos(k\omega t)\right]_{\frac{\pi}{6}}^{\frac{5\pi}{6}} =\\
+ &=\frac{2I_0}{k\pi}\left(\cos k\frac{\pi}{6}-\cos k\frac{5\pi}{6}\right) =\\
+ \text{con k=1 }&= \frac{2I_0}{\pi}\left(\frac{\sqrt{3}}{2} + \frac{\sqrt{3}}{2}  \right) \\
+  I_k &= \frac{\sqrt{2}\sqrt{3}I_0}{\pi}
+\end{align*}
+Si calcola quindi il THD:
+\begin{align*}
+ THD(I) &= \sqrt{\left(\frac{\cancel{I_0}\sqrt{\frac{\cancel{2}}{3}}}{\frac{\cancel{\sqrt{2}}\sqrt{3}\cancel{I_0}}{\pi}}\right)^2-1  } = \\
+ &= \sqrt{\left(\frac{\pi}{3}  \right)^2 -1 } = 31.1\%
+\end{align*}
 \section{Descrizione della prova eseguita}
 %Inserisci immagini circuito reale
 La prova è stata eseguita inizialmente su un carico puramente resistivo, 
