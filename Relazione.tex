@@ -59,7 +59,8 @@ Per effettuare la prova sono stati utilizzati i seguenti strumenti di misura:
 \end{itemize}
 
 \section{Componenti utilizzati}
-I componenti sottoposti a prova sono sei tiristori \%INSERISCI MODELLO\%.
+I componenti sottoposti a prova sono sei tiristori collegati in maniera tale da
+costituire un ponte raddrizzatore trifase.
 L'alimentazione del ponte è fornita tramite un trasformatore trifase a flusso vincolato 
 TTSK0.20 da 200 VA conforme alla norma di sicurezza CEI 96-7.
 Si può approssimare il rapporto tra le due tensioni nominali del trasformatore uguale al 
@@ -202,8 +203,8 @@ Usando la definizione di media integrale per le funzioni periodiche:
 \end{equation}
 Traslando l'intervallo di analisi in ritardo di un angolo pari a \(\frac{\pi}{6}\) 
 è possibile notare che le forme d'onda consecutive sono tutte identiche fra loro e pari %metti qua le coppolette se ci riesci
-a 6 in un periodo, sfruttando questa proprietà si può calcolare l'integrale per una singola forma d'onda e poi moltiplicarlo per 6.
-La forma d'onda da integrare è quindi la cuspide di un coseno, il valore medio di 
+a 6 in un periodo; sfruttando questa proprietà si può calcolare l'integrale per una singola forma d'onda e poi moltiplicarlo per 6.
+La forma d'onda da integrare è quindi la cuspide di un coseno; il valore medio di 
 tensione in uscita si calcola quindi nel seguente modo:
 \begin{equation}
  V_0 = \frac{6}{2\pi} \int_{-\frac{\pi}{6}+\alpha}^{\frac{\pi}{6}+\alpha}
@@ -219,6 +220,8 @@ Svolgendo i passaggi:
  &= \frac{3V}{\pi} \Big[2\cos\alpha\cdot\sin\left(\frac{\pi}{6}\right) \Big]= \\
  &= \frac{3V}{\pi} \Big[\cancel{2}\cos\alpha\cdot\cancel{\frac{1}{2}}\Big] = \frac{3V}{\pi}\cos\alpha
 \end{align*}
+\medskip
+
 dove \(V\) è il valore di picco della tensione concatenata al secondario del trasformatore
 pari a \(N\cdot\sqrt2\sqrt3\cdot V_{\lambda} \) con \(N\) pari al rapporto di trasformazione
 e \(V_{\lambda} \) il valore efficace della tensione in ingresso (stellata).
@@ -253,8 +256,10 @@ V_{RMS} &= \sqrt{\frac{6}{2\pi}\int_{-\frac{\pi}{6}+\alpha}^{\frac{\pi}{6}+\alph
 \end{align*}
 
 \subsection{Indici di prestazione}
-È utile il calcolo degli indici di prestazione della struttura al fine di poterla
-confrontare con altri raddrizzatori a semiconduttore.
+Gli indici di prestazione sono dei parametri adimensionali che determinano le
+performance di un convertitore a semiconduttori.
+È utile il calcolo degli indici di prestazione della struttura in analisi al fine di 
+poterla confrontare con altri raddrizzatori a semiconduttori.
 \subsubsection{Ripple Factor}
 Il Ripple Factor è un indice di qualità della forma d'onda in uscita, confronta
 il valore efficace di una grandezza, come ad esempio la tensione sul carico, con il 
@@ -278,7 +283,7 @@ Il RF minimo per un angolo \(\alpha\) nullo è quindi pari al 4\%.
 \subsubsection{THD}
 Il `Total Harmonic Distortion' è un indice che valuta il peso del contenuto armonico
 di una forma d'onda. È interessante calcolarlo per la forma di corrente a monte del
-trasformatore poiché, il fornitore di energia elettrica, può applicare una sovrattassa
+trasformatore poiché il fornitore di energia elettrica può applicare una sovrattassa
 se si assorbe dalla rete una corrente molto deformata e ricca di armoniche.
 \begin{equation}
  THD \stackrel{def}{=} \sqrt{\left(\frac{I_{rms}}{I_{rms_{1}}}\right)^2-1}
@@ -308,6 +313,11 @@ efficace si calcola nel seguente modo:
 Preso in considerazione un sistema di riferimento che abbia l'origine posizionato
 in maniera tale da rendere la forma d'onda dispari, essa potrà essere scomposta
 in serie di Fourier con termini di soli seni.\\
+La serie avrà la seguente forma:
+\begin{equation}
+ I(t) = \sum_{k=1}^{+\infty} b_k\sin(k\omega t -\varphi_k)
+ \label{eq:serie_fourier}
+\end{equation}
 Il coefficiente della serie \(b_k\) si calcola nel seguente modo:
 \begin{equation}
  b_k \stackrel{def}{=} \frac{2}{T}\int_0^t I(t)\sin(k\omega t) dt
@@ -326,7 +336,9 @@ Si calcola quindi il THD:
  THD(I) &= \sqrt{\left(\frac{\cancel{I_0}\sqrt{\frac{\cancel{2}}{3}}}{\frac{\cancel{\sqrt{2}}\sqrt{3}\cancel{I_0}}{\pi}}\right)^2-1  } = \\
  &= \sqrt{\left(\frac{\pi}{3}  \right)^2 -1 } = 31.1\%
 \end{align*}
-
+In realtà questo valore viene abbattuto dalla presenza del trasformatore che si 
+comporta come un filtro passa basso, attenuando le componenti di corrente ad alta 
+frequenza.
 \section{Descrizione della prova eseguita}
 %Inserisci immagini circuito reale
 La prova è stata eseguita inizialmente su un carico puramente resistivo, 
@@ -360,16 +372,14 @@ alimentato con soli 3 fili, questo spiega la presenza di una corrente
 omopolare al primario. Osservando la FFT (Fast Fourier Transform) della corrente al 
 primario, si notano la 
 presenza della fondamentale, della \ang{5} e della \ang{7} armonica; la terza 
-armonica, omopolare, circola nel neutro. È sicuramente vantaggioso quindi, ai fini 
-del THD, alimentare la struttura tramite un trasformatore.
-\medskip
+armonica, omopolare, circola nel neutro. È sicuramente vantaggioso quindi, come già
+accennato, alimentare la struttura tramite un trasformatore.
+%\medskip
 
 Inserendo nel carico anche l'induttore è possibile vedere la variazione della forma
 d'onda di corrente che non assume più la forma a cuspide ma assume andamenti 
 esponenziali smorzati; è ad ogni modo molto più filtrata rispetto al caso con carico
 puramente resistivo.
-
-
 \begin{figure}[H]
  \centering
  \includegraphics[keepaspectratio=true,width=0.9\linewidth]
@@ -380,5 +390,6 @@ puramente resistivo.
 
 \section{Risultati ottenuti}
 %In questa sezione inserisci le immagini dell'oscilloscopio
-
+I valori di tensione e corrente misurati sperimentalmente sono in linea con quanto 
+previsto in maniera analitica.
 \end{document}
