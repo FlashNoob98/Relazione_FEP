@@ -1,6 +1,4 @@
 \documentclass[a4paper,11pt]{article}
-
-
 \usepackage[utf8]{inputenc}
 %\usepackage{mathtools}
 \usepackage{graphicx}
@@ -29,7 +27,11 @@
 \maketitle
 
 \begin{abstract}
-
+In questa prova di laboratorio si analizza il comportamento di un ponte trifase a 
+tiristori alimentato tramite un trasformatore, valutando le forme d'onda di tensione
+e corrente sul carico tramite un oscilloscopio. Viene inoltre confrontato il valore 
+medio di tensione in uscita con quello calcolato analiticamente mediane il modello matematico 
+del ponte.
 \end{abstract}
 
 \begin{comment}
@@ -63,6 +65,8 @@ I componenti sottoposti a prova sono sei tiristori collegati in maniera tale da
 costituire un ponte raddrizzatore trifase.
 L'alimentazione del ponte è fornita tramite un trasformatore trifase a flusso vincolato 
 TTSK0.20 da 200 VA conforme alla norma di sicurezza CEI 96-7.
+La tensione nominale al primario è pari a $\SI{230}{\volt}$, mentre quella al 
+secondario è pari a $\SI{42}{\volt}$.
 Si può approssimare il rapporto tra le due tensioni nominali del trasformatore uguale al 
 rapporto di trasformazione e pari quindi a circa 9.5.
 
@@ -390,6 +394,16 @@ puramente resistivo.
 
 \section{Risultati ottenuti}
 %In questa sezione inserisci le immagini dell'oscilloscopio
-I valori di tensione e corrente misurati sperimentalmente sono in linea con quanto 
-previsto in maniera analitica.
+%MA ANCHE NO! LE HO MESSE PRIMA!!!
+È stata dimostrata con questa prova la congruenza tra i modelli matematici e le 
+prestazioni di una reale struttura a semiconduttori. Il valore medio di tensione
+in uscita ad esempio coincide con quanto calcolato analiticamente, l'oscillazione
+della stessa attorno al valore medio avviene ad una frequenza pari a 6 volte quella
+di alimentazione.
+
+Anche il comportamento del trasformatore rispecchia quanto ci si aspetta dal modello
+analitico in quanto si comporta come filtro per la componente di \ang{3} armonica 
+di corrente, tuttavia è necessaria un'analisi più approfondita delle forme d'onda 
+di tensione e corrente per poter analizzare i parametri prestazionali della struttura come il Ripple Factor o il THD.
+%aggiungerai il Power Factor?
 \end{document}
